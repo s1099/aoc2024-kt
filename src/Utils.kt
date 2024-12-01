@@ -19,3 +19,19 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+/**
+ * Parse the read data
+ */
+fun parseInput(input: List<String>): Pair<MutableList<Int>, MutableList<Int>> {
+    val leftList = mutableListOf<Int>()
+    val rightList = mutableListOf<Int>()
+
+    input.forEach { line ->
+        val (left, right) = line.split("\\s+".toRegex()).map { it.toInt() }
+        leftList.add(left)
+        rightList.add(right)
+    }
+
+    return Pair(leftList, rightList)
+}
